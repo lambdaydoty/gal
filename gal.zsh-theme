@@ -9,7 +9,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 # Customized git status, oh-my-zsh currently does not allow render dirty status before branch
 git_custom_status() {
   local branch=$(git_current_branch)
-  [[ -n "$branch" ]] || (echo " " && return 0)
+  [[ -n "$branch" ]] || return 0
   echo "$(parse_git_dirty)\
 %{${fg_bold[green]}%}$(work_in_progress)%{$reset_color%}\
 ${ZSH_THEME_GIT_PROMPT_PREFIX}${branch}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
@@ -48,5 +48,5 @@ function precmd() {
 #RPS1='$(git_custom_status)%F{yellow}%B$(if [ $cmd_time ]; then echo " $cmd_time"; fi)%b'
 
 # Combine it all into a final right-side prompt
-RPS1="\$(if [ \$cmd_time ]; then echo \"\$cmd_time\"; fi)\$(git_custom_status)%D{%I:%M%p}${RPS1:+ $RPS1}"
-PROMPT='%{$fg[yellow]%}[%~% ]%(?.%{$fg[yellow]%}.%{$fg[red]%})%B$%b '
+RPS1="\$(if [ \$cmd_time ]; then echo \"\$cmd_time\"; fi) \$(git_custom_status) %t${RPS1:+ $RPS1}"
+PROMPT='%{$fg[yellow]%}[%~% ]%(?.%{$fg[yellow]%}.%{$fg[red]%}) %B$%b '
