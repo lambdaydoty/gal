@@ -9,7 +9,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 # Customized git status, oh-my-zsh currently does not allow render dirty status before branch
 git_custom_status() {
   local branch=$(git_current_branch)
-  [[ -n "$branch" ]] || return 0
+  [[ -n "$branch" ]] || (echo " " && return 0)
   echo "$(parse_git_dirty)\
 %{${fg_bold[green]}%}$(work_in_progress)%{$reset_color%}\
 ${ZSH_THEME_GIT_PROMPT_PREFIX}${branch}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
