@@ -20,6 +20,7 @@ function preexec() {
   cmd_start=$(($(print -P %D{%s%6.}) / 1000))
 }
 function precmd() {
+  cmd_time=""
   if [ $cmd_start ]; then
     local now=$(($(print -P %D{%s%6.}) / 1000))
     local d_ms=$(($now - $cmd_start))
@@ -47,5 +48,5 @@ function precmd() {
 #RPS1='$(git_custom_status)%F{yellow}%B$(if [ $cmd_time ]; then echo " $cmd_time"; fi)%b'
 
 # Combine it all into a final right-side prompt
-RPS1='$(git_custom_status)$(if [ $cmd_time ]; then echo " $cmd_time"; fi)${RPS1:+ $RPS1}'
+RPS1="\$(git_custom_status)$cmd_time${RPS1:+ $RPS1}"
 PROMPT='%t %{$fg[yellow]%}[%~% ]%(?.%{$fg[yellow]%}.%{$fg[red]%})%B$%b '
