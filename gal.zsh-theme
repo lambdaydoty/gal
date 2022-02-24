@@ -51,5 +51,6 @@ ZSH_THEME_RUBY_PROMPT_SUFFIX="]%{$reset_color%}"
 
 # Combine it all into a final right-side prompt
 RPS1='$(git_custom_status)%F{yellow}%B$(if [ $cmd_time ]; then echo " $cmd_time"; fi)%b'
-PROMPT='%F{cyan}%B%t%b %F{yellow}[%~% ]%(?.%F{yellow}.%F{red})%B $%b '
+PROMPT='%F{cyan}%B%t%b %{$fg[cyan]%}[%~% ]%(?.%{$fg[yellow]%}.%{$fg[red]%})%B$%b '
+#PROMPT='%F{cyan}%B%t%b %F{yellow}[%~% ]%(?.%F{yellow}.%F{red})%B $%b '
 #PROMPT='%F{cyan}%B%t%b %F{red}[%~% ]%(?.%F{green}.%F{red})%B λ%b '
