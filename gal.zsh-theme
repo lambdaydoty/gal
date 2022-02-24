@@ -48,5 +48,5 @@ function precmd() {
 #RPS1='$(git_custom_status)%F{yellow}%B$(if [ $cmd_time ]; then echo " $cmd_time"; fi)%b'
 
 # Combine it all into a final right-side prompt
-RPS1="\$(if [ \$cmd_time ]; then echo \"\$cmd_time\"; fi) \$(git_custom_status) %t${RPS1:+ $RPS1}"
+RPS1="\$(if [ \$cmd_time ]; then echo \"\$cmd_time\"; fi)\$(git_custom_status)%t${RPS1:+ $RPS1}"
 PROMPT='%{$fg[yellow]%}[%~% ]%(?.%{$fg[yellow]%}.%{$fg[red]%})%B$%b '
